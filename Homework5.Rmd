@@ -1,0 +1,21 @@
+---
+title: "Heidi Kloser Homework_5"
+author: "Heidi Kloser"
+date: "2022-11-15"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Libraries
+```{r}
+
+```
+
+List files in "data" sub directory
+```{r}
+list.files("data")
+```
+
