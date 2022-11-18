@@ -63,4 +63,9 @@ ga_counties %>%
   slice(1:3)
 class(ga_counties$geometry)
 ```
+Making a map of Georga counties
+```{r}
+ggplot() + 
+  geom_sf(data = ga_counties, aes(fill = ALAND))
+```
 
