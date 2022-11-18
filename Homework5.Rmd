@@ -50,3 +50,17 @@ head(homicides, 3)
 
 ```
 
+Putting map components in 
+```{r}
+ga_counties <- counties(state = "GA", cb = TRUE, class = "sf")
+#getting geographical data from sf/tigris
+class(ga_counties)
+```
+
+checking county and class data
+```{r}
+ga_counties %>% 
+  slice(1:3)
+class(ga_counties$geometry)
+```
+
