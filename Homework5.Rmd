@@ -5,17 +5,48 @@ date: "2022-11-15"
 output: pdf_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, 
+                      error = FALSE)
 ```
+
 
 Libraries
 ```{r}
-
+#packages
+library(tidyverse)
+library(lubridate)
+library(ggthemes)
+library(broom)
+library(knitr)
+library(scales)
+library(tigris)
+library(sf)
 ```
 
 List files in "data" sub directory
 ```{r}
 list.files("data")
+```
+
+```{r}
+# read in data
+homicides<-read.csv("data/homicide-data.csv")
+
+# piping n code to clean up data
+homicides<- homicides%>%
+  mutate(state = str_to_upper(string = state))%>% # changing case
+  mutate(city_name = paste(city, state))%>% # combine city and state name to one col
+    mutate(status = factor(disposition, levels = c("Closed by arrest", 
+                                                      "Closed without arrest", 
+                                                      "Open/No arrest"), 
+                      labels = c("solved", "unsolved", "unsolved")))%>% 
+  # creating new col for solves/unsolved
+  filter(str_detect(city_name, "Atlanta"))%>% # filtering to only Atlanta
+  select(- city, - state, - disposition) #removing redundant columns
+
+
+head(homicides, 3)
+
 ```
 
