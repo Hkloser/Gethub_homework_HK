@@ -96,35 +96,13 @@ atlanta %>%
 ggplot() + 
   geom_sf(data = atlanta, aes(fill = ALAND))
 ```
-
-testing out some other code
-```{r}
-manhattan_roads <- roads("NY", "New York")
-
-ggplot(manhattan_roads) + 
-  geom_sf() + 
-  theme_void()
-```
-
-```{r}
-ggplot(atlanta) + 
-  geom_sf() + 
-  theme_void()
-```
-
-```{r}
-school <- school_districts(state = "GA", type = "unified", year = NULL, cb = TRUE, class = "sf")
-
-school %>% 
-ggplot() + 
-  geom_sf(aes(fill = ALAND))
-```
-
+Base map for sub layer
 ```{r}
 ga_f <- county_subdivisions(state = "GA", county = "Fulton", cb = TRUE, class = "sf")
 
 ga_f %>% 
 ggplot() + 
-  geom_sf(aes(fill = ALAND))
+  geom_sf()+ 
+  theme_void()
 ```
 
