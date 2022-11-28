@@ -112,5 +112,19 @@ ggplot(atlanta) +
   theme_void()
 ```
 
+```{r}
+school <- school_districts(state = "GA", type = "unified", year = NULL, cb = TRUE, class = "sf")
 
+school %>% 
+ggplot() + 
+  geom_sf(aes(fill = ALAND))
+```
+
+```{r}
+ga_f <- county_subdivisions(state = "GA", county = "Fulton", cb = TRUE, class = "sf")
+
+ga_f %>% 
+ggplot() + 
+  geom_sf(aes(fill = ALAND))
+```
 
