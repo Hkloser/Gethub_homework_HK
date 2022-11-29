@@ -100,12 +100,12 @@ Map
 ```{r}
 #trying to put points on the map
 ggplot() + 
-  geom_sf(data = ga_f)+ 
-  theme(axis.text.x = element_text(angle = 45))+
+  geom_sf(data = ga_f)+
   xlim(c(-84.73, -84.3)) + ylim(c(33.6, 34.0))+
   facet_wrap(~status, ncol = 2)+
   geom_sf(data = at_hom, aes(color = victim_race))+
   ggtitle("Solved vs. Unsolved Homicides in Atlanta by Race")+
   labs(color = "Victim Race")+
-  theme_few()
+  theme_few()+ 
+  theme(axis.text.x = element_text(angle = 45))
 ```
